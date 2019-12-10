@@ -1,5 +1,10 @@
 <?php
+echo 'above all';
+ini_set('display_errors', '1');
+
+include('env.php');
 require_once('config.php');
+echo $_SERVER["HTTP_HOST"];
 
 
 if (isset($_GET['logout'])) { // logout: destroy token
@@ -12,39 +17,57 @@ if (isset($_GET['logout'])) { // logout: destroy token
 // }
 
 
+echo 'before is set get code';
 if (isset($_GET['code'])) { // we received the positive auth callback, get the token and store it in session
-    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    // $client->setAccessToken($token['access_token']);
-   
-   
-    // $client->authenticate();
+    // $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    $client->authenticate($_GET['code']);
+    // $access_token = $client->getAccessToken();
+
+
     $_SESSION['accessToken'] = $client->getAccessToken();
+    
+        echo '<pre>';
+    var_dump($_SESSION);
+    echo '</pre>';
 }
 
-if (isset($_SESSION['token'])) { // extract token from session and configure client
+echo 'before isset accesstoken';
+if (isset($_SESSION['accessToken'])) { // extract token from session and configure client
     $token = $_SESSION['accessToken'];
     $client->setAccessToken($token);
+    echo 'inside if isset session token';
 }
 
 if (!$client->getAccessToken()) { // auth call to google
-    // $authUrl = $client->createAuthUrl();
-    // header("Location: ".$authUrl);
-    header("Location: http://localhost/login.php");
-    // exit();
+   
+    header("Location: {$pathValue}/login.php");
+    exit();
 }
+
+
+echo '...............now print google oauth';
 $google_oauth = new Google_Service_Oauth2($client);
 
-$datas = $google_oauth->userinfo->get();
 
-$emailid= $datas['email'];
+echo '<pre>';
+    // var_dump($client);
+    echo '</pre>';
+echo 'after google oauth';
+$datas = $google_oauth->userinfo->get()->email;
 
+echo '..................Now print value in data';
+
+var_dump($datas);
+$emailid = $datas;
+echo 'after getting email';
 
 if (strpos($emailid, '@indiamart.com') === false) {
-    echo 'true';
-    header("Location: http://localhost/login.php");
+    echo 'false - not im id';
+    header("Location: {$pathValue}/login.php");
  
 }else{
-    header("Location: http://localhost/extentReport-index.php");
+    echo 'true - im id';
+    header("Location: {$pathValue}/extentReport-index.php");
 }
 exit();
 ?>

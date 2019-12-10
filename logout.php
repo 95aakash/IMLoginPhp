@@ -1,5 +1,6 @@
 <?php
 // include('config.php');
+include('env.php');
 session_start();
 
 echo 'Logged Out';
@@ -17,6 +18,8 @@ session_destroy();
 
 
 // redirect page to index.php
-header('location: http://localhost/login.php');
+header("location: {$pathValue}/login.php");
+
+
 
 ?>

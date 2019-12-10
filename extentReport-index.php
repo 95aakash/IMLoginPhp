@@ -1,5 +1,7 @@
 <?php
 require('session.php');
+include('env.php');
+// echo $_SERVER["HTTP_HOST"];
 ?>
 
 
@@ -47,7 +49,8 @@ require('session.php');
 					<i class='mdi-hardware-desktop-windows'></i>
 				</li>
 				<li>
-				<li><a href=logout.php class="button">Logout</a></li>
+				<li><a href='<?php echo $pathValue;?>/logout.php' class="button">Logout</a></li>
+				
 					<span class='suite-started-time'>2019-09-25 16:30:12</span>
 				</li>
 				<li>
@@ -70,34 +73,40 @@ require('session.php');
 								<ul id='test-collection' class='test-collection'>
 										<li class='collection-item test displayed active pass '>										
 											<div>
-												<a href='otp/index.php'> OTP & VERIFICATION </a>
+											<a href='<?php echo $pathValue;?>/otp/index.php'> OTP & VERIFICATION </a>
 												<br>
 											</div>
 										</li>
 										<li class='collection-item test displayed active pass '>
 											<div>
-												<a href='product/index.php'> PRODUCT </a>
+											<a href='<?php echo $pathValue;?>/product/index.php'> PRODUCT </a>
 												<br>
 											</div>
 										</li>
 										<li class='collection-item test displayed active pass '>
 											<div>		
-												<a href='http://report.intermesh.net/impcat/index.html'> IMPCAT </a>
+												<a href='<?php echo $pathValue;?>/impcat/index.php'> IMPCAT </a>
 												<br>
 											</div>
 										</li>	
 										<li class='collection-item test displayed active pass '>
 											<div>
-												<a href='company/index.php'> COMPANY </a>
+											<a href='<?php echo $pathValue;?>/company/index.php'> COMPANY </a>
 												<br>
 											</div>
 										</li>
 										<li class='collection-item test displayed active pass '>
 											<div>	
-												<a href='http://report.intermesh.net/pdp/index.html'> PDP </a>
+											<a href='<?php echo $pathValue;?>/pdp/index.php'> PDP </a>
 												<br>
 											</div>
 										</li>
+										<li class='collection-item test displayed active pass '>
+											<div>		
+											<a href='<?php echo $pathValue;?>/buyleads/index.php'> BUY LEADS </a>
+											</div>
+										</li>
+
 										<li class='collection-item test displayed active pass '>
 											<div>
 												<!-- <a href='http://report.intermesh.net/related/index.html'> RELATED </a> -->
@@ -185,7 +194,7 @@ require('session.php');
 										<li class='collection-item test displayed active pass '>
 											<div>		
 												<!-- <a href='http://report.intermesh.net/graphdb/index.html'> GRAPH DB </a> -->
-												GRAPH DB
+												
 											</div>
 										</li>									
 								</ul>

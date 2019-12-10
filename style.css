@@ -1,7 +1,65 @@
-body{
-    background: #0d161f;
+button {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ed3330;
+    padding: 2px;
+    border-radius: 5px;
+
+    border: none;
+    }
+    
+#overlay {
+text-align:center;
+color: white;
+position: fixed; /* Sit on top of the page content */
+display: none; 
+width: 90%; /* Full width (cover the whole page) */
+height: 95%; /* Full height (cover the whole page) */
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+/* cursor: pointer; Add a pointer on hover */
 }
-#loader-container{
+.loader-div{
+
+    /* width: calc(50% - 36px);
+    height: calc(80% - 36px); */
+    border: 8px solid #162534;
+    text-align: center;
+    border-top: 8px solid #09f;
+    border-radius: 20%;
+    animation: rotate 5s linear infinite;
+    margin: auto;
+  width: 10%;
+  height: 10%;
+  position: relative;
+}
+@keyframes rotate{
+    100% {transform: rotate(360deg);}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body{
+    background: #0d161f;
+} */
+/* #loader-container{
     width: 200px;
     height: 200px;
     position: relative;
@@ -10,8 +68,8 @@ body{
     transform: translate(-50%,50%);
     overflow: hidden;
     /* background: #ffffff; */
-}
-.loader-div{
+
+/* .loader-div{
     width: calc(100% - 16px);
     height: calc(100% - 16px);
     border: 8px solid #162534;
@@ -19,12 +77,12 @@ body{
     border-radius: 50%;
     animation: rotate 5s linear infinite;
 
-}
-@keyframes rotate{
+} */
+/* @keyframes rotate{
     100% {transform: rotate(360deg);}
 }
 #loader-text{
     text-align: center;
     font-size: 20px;
     color: white;
-}
+} */

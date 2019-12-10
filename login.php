@@ -1,25 +1,16 @@
 <?php
-session_start();
+// ini_set('display_errors', 1);
+
+require_once('config.php');
+include('env.php');
+// echo $_SERVER["HTTP_HOST"];
+// session_start();
 // print_r($_SESSION['accessToken']);
 if ( isset( $_COOKIE['PHPSESSID'] ) ){
-    setcookie('PHPSESSID' , "", time()-3600, "/" );
+    setcookie('PHPSESSID' , "", time()-3600 );
 }
 session_destroy();
-// }
-
 ?>
-
-<!-- 
-//php
-// session_start();
-// if (isset($_GET['logout'])) { // logout: destroy token
-// 	unset($_SESSION['accessToken']);
-// 	$_SESSION = array();
-// 	session_destroy();
-// 	// die('Logged out.');
-// }
-/ -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,8 +34,10 @@ session_destroy();
 
 <body>
 		<div class="btn white darken-4 col s10 m4">
-
-				<a href="http://localhost/loginRedirect.php" style="text-transform:none">
+		
+				
+				
+				<a href= "<?php echo $client->createAuthUrl();?>" style="text-transform:none">
 				
 					<div class="left">
 						<img width="25px" height ="30px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
@@ -53,8 +46,7 @@ session_destroy();
 				</a>
 				
 		   </div>
-		   <!-- <a href="product/index.html" style="text-transform:none">link to html</a> -->
-
+		  
 		   
 		   
 
